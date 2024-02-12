@@ -3,15 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const body = document.querySelector('body')
 
-	// Smooth scroll when link clicked
-	const $page = $('html, body');
-	$('a[href*="#"]').click(function() {
-		$page.animate({
-			scrollTop: $($.attr(this, 'href')).offset().top
-		}, 800);
-		return false;
-	});
-
 	// CORE ITEMS
 	document.querySelectorAll('.core__item').forEach(item => {
 		item.addEventListener('mouseover', e => {
@@ -29,9 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	// CARD SHOW/HIDE
-	document.querySelectorAll('.card__item').forEach(card => {
+	const allCards = document.querySelectorAll('.card__item')
+	allCards.forEach(card => {
 		card.addEventListener('click', e => {
 			if (!e.target.closest('.card__item').classList.contains('active')) {
+				allCards.forEach(card => {
+					card.classList.remove('active')
+				})
 				e.target.closest('.card__item').classList.add('active')
 			} else {
 				e.target.closest('.card__item').classList.remove('active')
@@ -142,17 +137,69 @@ document.addEventListener('DOMContentLoaded', () => {
 	showHideModal('.video__modal','.video__modal .modal__close', '.video__modal .modal__wrapper', '.video__modal .modal__overlay', '.video__btn')
 
 	// HEADER NAV SHOW/HIDE
-	document.querySelector('.burger').addEventListener('click', e => {
-		if (!document.querySelector('.header__left').classList.contains('active')) {
-			document.querySelector('span.burger__text').innerHTML = 'Закрыть'
-			document.querySelector('.header__left').classList.add('active')
-		} else {
-			document.querySelector('span.burger__text').innerHTML = 'Меню'
-			document.querySelector('.header__left').classList.remove('active')
-		}
+
+	if (document.documentElement.clientWidth >= 1024) {
+		document.querySelector('.burger').addEventListener('click', e => {
+			if (!document.querySelector('.header__left').classList.contains('active')) {
+				document.querySelector('span.burger__text').innerHTML = 'Закрыть'
+				document.querySelector('.header__left').classList.add('active')
+			} else if (document.querySelector('.header__left').classList.contains('active')) {
+				document.querySelector('span.burger__text').innerHTML = 'Меню'
+				document.querySelector('.header__left').classList.remove('active')
+			}
+		})
+	} else if (document.documentElement.clientWidth < 1024) {
+		document.querySelector('.burger').addEventListener('click', e => {
+			if (!document.querySelector('.burger').classList.contains('active')) {
+				document.querySelector('span.burger__text').innerHTML = 'Закрыть'
+				document.querySelector('.hidden__mobile__nav').classList.add('active')
+				document.querySelector('.burger').classList.add('active')
+			} else if (document.querySelector('.burger').classList.contains('active')) {
+				document.querySelector('span.burger__text').innerHTML = 'Меню'
+				document.querySelector('.hidden__mobile__nav').classList.remove('active')
+				document.querySelector('.burger').classList.remove('active')
+			}
+		})
+	}
+
+	function clickOnBurgerLink(nav) {
+		nav.forEach(link => {
+			link.addEventListener('click', e => {
+				e.preventDefault()
+				if (e.target.closest('a').href.includes('#')) {
+					document.querySelector('span.burger__text').innerHTML = 'Меню'
+					document.querySelector('.hidden__mobile__nav').classList.remove('active')
+					document.querySelector('.burger').classList.remove('active')
+				} else {
+					location.href = e.target.closest('a').href
+				}
+			})
+		})
+	}
+
+	const hiddenTopNavLink = document.querySelectorAll('.hidden__mobile__top__nav a.hidden__nav__link')
+	const hiddenBottomNavLink = document.querySelectorAll('.big__nav a.hidden__nav__link')
+	const headerNavLink = document.querySelectorAll('.hidden__nav a.hidden__nav__link')
+	const hiddenNavLink = document.querySelectorAll('.small__nav a.nav__link')
+
+	clickOnBurgerLink(hiddenTopNavLink)
+	clickOnBurgerLink(hiddenBottomNavLink)
+	clickOnBurgerLink(hiddenNavLink)
+
+	headerNavLink.forEach(link => {
+		link.addEventListener('click', e => {
+			e.preventDefault()
+			if (e.target.closest('a').href.includes('#')) {
+				document.querySelector('span.burger__text').innerHTML = 'Меню'
+				document.querySelector('.header__left').classList.remove('active')
+			} else {
+				location.href = e.target.closest('a').href
+			}
+		})
 	})
 
 	document.querySelector('.btn.header__btn').addEventListener('click', e => {
+		e.preventDefault()
 		if (!document.querySelector('.header__right').classList.contains('active')) {
 			document.querySelector('.header__right').classList.add('active')
 		} else {
@@ -166,6 +213,64 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector('#file-label').innerText = filename;
 		document.querySelector('.custom-file-upload').classList.add('load')
 	});
+
+	// Smooth scroll when link clicked
+	const $page = $('html, body');
+	$('a[href*="#"]').click(function() {
+		if (document.documentElement.clientWidth > 1023) {
+			$page.animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - 100
+			}, 800);
+			return false;
+		} else {
+			$page.animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - 50
+			}, 800);
+			return false;
+		}
+		
+	});
+
+	function maskPhone(selector, masked = '+7 (___) ___-__-__') {
+		const elems = document.querySelectorAll(selector);
+	
+		function mask(event) {
+			const keyCode = event.keyCode;
+			const template = masked,
+				def = template.replace(/\D/g, ""),
+				val = this.value.replace(/\D/g, "");
+			console.log(template);
+			let i = 0,
+				newValue = template.replace(/[_\d]/g, function (a) {
+					return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+				});
+			i = newValue.indexOf("_");
+			if (i !== -1) {
+				newValue = newValue.slice(0, i);
+			}
+			let reg = template.substr(0, this.value.length).replace(/_+/g,
+				function (a) {
+					return "\\d{1," + a.length + "}";
+				}).replace(/[+()]/g, "\\$&");
+			reg = new RegExp("^" + reg + "$");
+			if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+				this.value = newValue;
+			}
+			if (event.type === "blur" && this.value.length < 5) {
+				this.value = "";
+			}
+	
+		}
+	
+		for (const elem of elems) {
+			elem.addEventListener("input", mask);
+			elem.addEventListener("focus", mask);
+			elem.addEventListener("blur", mask);
+		}
+		
+	}
+
+	maskPhone('input[type="tel"]')
 
 	// AOS init
 	AOS.init();

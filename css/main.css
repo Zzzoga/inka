@@ -56,13 +56,24 @@ section {
 }
 
 header.header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     padding-top: 22px;
     width: 100vw;
     display: flex;
     justify-content: center;
+    z-index: 999;
+}
+
+header.header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 22px;
+	background: #fff;
 }
 
 .section__wrapper {
@@ -75,6 +86,7 @@ header.header {
 header.header .section__wrapper {
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
 }
 
 .header__left, .header__right {
@@ -115,8 +127,28 @@ section.top__screen {
     align-items: flex-end;
     background: url(../img/top__screen__bg.png) no-repeat 46px 22px;
     margin-bottom: 110px;
+    position: relative;
 }
 
+section.top__screen::before {
+    position: absolute;
+    content: '';
+    width: 46px;
+    height: 100%;
+    background: #fff;
+    left: 0;
+    top: 0;
+}
+
+section.top__screen::after {
+    position: absolute;
+    content: '';
+    width: 46px;
+    height: 100%;
+    background: #fff;
+    right: 0;
+    top: 0;
+}
 
 span.burger__icon__line {
     width: 32px;
@@ -131,6 +163,7 @@ span.burger__icon__line {
     position: relative;
     margin-left: 8px;
     width: 32px;
+    transition: all .5s ease;
 }
 
 span.burger__icon__line:nth-child(1) {
@@ -197,21 +230,29 @@ a.btn:hover {
     background: #0C54A0;
 }
 
-.burger.active span.burger__icon__line:nth-child(1) {
+.burger.active span.burger__icon__line:nth-child(1),
+header.active span.burger__icon__line:nth-child(2) {
     transform: rotate(45deg);
     top: 0;
-    background: #0C54A0;
+    background: #000;
+    width: 24px;
 }
 
-.burger.active span.burger__icon__line:nth-child(2) {
+.burger.active span.burger__icon__line:nth-child(2),
+header.active span.burger__icon__line:nth-child(2) {
     transform: rotate(-45deg);
     top: 0;
-    background: #0C54A0;
+    background: #000;
+    width: 24px;
 }
 
 
 .burger.active span.burger__text {
-    color: #0C54A0;
+    color: #000;
+}
+
+.burger.active .burger__icon {
+    width: 20px;
 }
 
 .header__left::after {
@@ -345,11 +386,18 @@ section.description {
     margin-bottom: 80px;
 }
 
+.core__items {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .core__list.left, .core__list.right {
     display: flex;
     flex-direction: column;
     max-width: 442px;
     width: 100%;
+    padding-top: 145px;
 }
 
 .core__item {
@@ -391,9 +439,9 @@ span.core__title.bold {
 section.core .section__wrapper {
     display: flex;
     flex-direction: row;
-    align-items: center;
     width: 100%;
     justify-content: space-between;
+    height: 688px;
 }
 
 .core__container {
@@ -402,10 +450,23 @@ section.core .section__wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/core.svg), radial-gradient(74.41% 74.41% at 17.53% 25.59%, #FFFFFF 0.5%, rgba(194, 200, 231, 0.15) 37.06%, rgba(64, 78, 153, 0.1) 67%, rgba(143, 143, 143, 0.08) 96.22%);
+    background: radial-gradient(74.41% 74.41% at 17.53% 25.59%, #FFFFFF 0.5%, rgba(194, 200, 231, 0.15) 37.06%, rgba(64, 78, 153, 0.1) 67%, rgba(143, 143, 143, 0.08) 96.22%);
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.core__container__img {
+    width: 600px;
+    height: 600px;
+    background: url(../img/core.svg) no-repeat center center;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h2.core__title {
@@ -566,6 +627,12 @@ section.content {
 .person__info {
     display: flex;
     max-width: 362px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.person__img {
+    display: flex;
 }
 
 .card__icon__wrapper {
@@ -593,6 +660,7 @@ span.person__name {
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 4px;
+    font-weight: 500;
 }
 
 span.person__status {
@@ -628,8 +696,14 @@ span.card__icon__line:nth-child(2) {
     transform: rotate(90deg);
 }
 
-.card__item:hover > .card__icon__wrapper .card__icon {
-    background: #0C54A0;
+.card__item:hover > .card__icon__wrapper .card__icon,
+.accordion__item:hover > .card__icon__wrapper .card__icon {
+    transform: rotate(360deg);
+}
+
+.card__item:hover > .card__icon__wrapper .card__icon span.card__icon__line,
+.accordion__item:hover > .card__icon__wrapper .card__icon span.card__icon__line {
+    width: 18px;
 }
 
 .card__icon__wrapper::before {
@@ -663,18 +737,30 @@ span.card__icon__line:nth-child(2) {
     margin-left: 20px;
 }
 
+.cards__items {
+    padding-top: 40px;
+}
+
+section.cases .section__info {
+    margin: 0;
+}
+
 .team__item {
     max-width: 442px;
+    display: flex;
+    flex-direction: column;
 }
 
 .team__item img {
     width: 100%;
     border-radius: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 h3.team__name {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 24px;
     margin: 16px 0 4px 0;
 }
@@ -696,26 +782,57 @@ h3.team__name {
 
 .team__item.vacansy {
     position: relative;
-    max-height: 507px;
-    font-size: 54px;
-    font-weight: 500;
-    line-height: 54px;
-    color: #fff;
-    padding: 40px;
     border-radius: 30px;
-    background: url(../img/vacansy.svg) no-repeat 28px bottom;
-    background-color: #0C54A0;
     cursor: pointer;
 }
 
-.team__item.vacansy:hover > .card__icon__wrapper .card__icon {
-    background: #0C54A0;
+.vacansy__inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team__item.vacansy:hover > .vacansy__inner .card__icon__wrapper .card__icon,
+.news__item:hover > .news__img .card__icon__wrapper .card__icon {
+    transform: rotate(-30deg);
+}
+
+.card__icon svg {
+    transition: all .5s ease;
+}
+
+.team__item.vacansy:hover > .vacansy__inner .card__icon__wrapper .card__icon svg,
+.news__item:hover > .news__img .card__icon__wrapper .card__icon svg {
+    width: 19px;
+    height: 19px;
+}
+
+.news__item:hover,
+.card__item:hover {
+    transform: translateY(-3%);
+}
+
+.news__item:hover > .news__img img {
+    width: 110%;
 }
 
 h3.vacansy__title {
     font-size: 54px;
     font-weight: 500;
     line-height: 54px;
+    color: #fff;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.news__list.swiper {
+    padding-top: 100px;
+}
+
+section.team {
+    margin-bottom: 0;
 }
 
 section.news .section__wrapper {
@@ -727,6 +844,7 @@ section.news .section__wrapper {
 section.news .section__wrapper .news__info {
     max-width: 442px;
     width: 100%;
+    padding-top: 100px;
 }
 
 h3.news__title {
@@ -741,6 +859,7 @@ h3.news__title {
     max-width: 442px;
     text-decoration: none;
     color: #000;
+    transition: all .5s ease;
 }
 
 .news__img {
@@ -748,18 +867,17 @@ h3.news__title {
     display: flex;
     max-width: 442px;
     max-height: 400px;
-    border-radius: 30px;
+    border-radius: 30px 30px 0 30px;
     overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 
 .news__img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.news__item:hover > .news__img .card__icon__wrapper .card__icon {
-    background: #0C54A0;
+    transition: all .5s ease;
 }
 
 .hidden__detail__text {
@@ -837,18 +955,18 @@ section.faq h2.section__title {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url(../img/faq__hover.svg) no-repeat center top;
+    background: url(../img/faq__hover.svg) center top;
     background-color: #EBECEC;
     transition: all .5s ease;
     z-index: -1;
 }
 
 .accordion__item.accordion__item_show .bg__overlay {
-    background: url(../img/faq__active.svg) no-repeat center top;
+    background: url(../img/faq__active.svg) center top;
 }
 
 .accordion__item.accordion__item_show:hover > .bg__overlay {
-    background: url(../img/faq__active.svg) no-repeat center top;
+    background: url(../img/faq__active.svg) center top;
 }
 
 .accordion__item.accordion__item_show {
@@ -857,10 +975,6 @@ section.faq h2.section__title {
 
 .accordion__item:hover {
     background-color: transparent;
-}
-
-.accordion__item:hover > .card__icon__wrapper .card__icon {
-	background: #0C54A0;
 }
 
 .accordion__item:not(.accordion__item_show) .accordion__header {
@@ -1059,7 +1173,7 @@ a.footer__nav__links:hover {
     display: none;
     justify-content: flex-end;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
 }
 
 .modal.visible {
@@ -1389,6 +1503,7 @@ h3.video__item__title {
     font-size: 18px;
     line-height: 21px;
     font-weight: 500;
+    margin-top: 16px;
     transition: all .5s ease;
 }
 
@@ -1405,6 +1520,16 @@ h3.video__item__title {
 
 .video__item:hover > h3.video__item__title {
     color: #0c54a0;
+}
+
+.video__item__img img {
+    width: 100%;
+}
+
+.video__item__img {
+    display: flex;
+    border-radius: 7px;
+    overflow: hidden;
 }
 
 /* HIDDEN HEADER NAV */
@@ -1462,12 +1587,14 @@ a.hidden__nav__link:hover {
     border-radius: 0 0 0 0;
 }
 
-.header__left.active span.burger__icon__line:nth-child(1) {
+.header__left.active span.burger__icon__line:nth-child(1),
+header.header .active__nav span.burger__icon__line:nth-child(1) {
     top: 0px;
     transform: rotate(45deg);
 }
 
-.header__left.active span.burger__icon__line:nth-child(2) {
+.header__left.active span.burger__icon__line:nth-child(2),
+header.header .active__nav span.burger__icon__line:nth-child(2) {
     top: 0px;
     transform: rotate(-45deg);
 }
@@ -1513,4 +1640,154 @@ a.btn.header__btn svg {
 
 .header__right.active a.btn.header__btn svg {
     display: flex;
+}
+
+/* DESKTOP NONE */
+
+.hidden__mobile__nav {
+    display: flex;
+    position: fixed;
+    z-index: 99;
+    background: #fff;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    transform: translateY(-100%);
+    transition: all .5s ease;
+}
+
+.arrows.mobile__arrows {
+    display: none;
+}
+
+/* PRELOADER */
+
+.preloader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease;
+}
+
+.preloader.disable {
+    transform: translateY(-100%);
+}
+
+.preloader__wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+.preloader__wrapper.visible {
+    opacity: 1;
+}
+
+.preloader__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preloader__logo {
+    display: flex;
+}
+
+.preloader__logo svg {
+    width: 340px;
+    height: 77px;
+}
+
+.preloader__percent {
+    font-size: 110px;
+    font-weight: 400;
+    line-height: 126px;
+    display: flex;
+}
+
+.percent__value {
+    display: flex;
+}
+
+.percent__dinamic {
+    position: relative;
+    overflow: hidden;
+    max-height: 126px;
+}
+
+.percent__dinamic__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    transition: all .5s ease;
+    transform: translateY(10%);
+}
+
+.preloader__progress {
+    width: 100%;
+    height: 4px;
+    margin-top: 13px;
+    position: relative;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progressbar__wrapper {
+    width: 100%;
+    height: 4px;
+    background: rgba(0,0,0,.3);
+}
+
+.progressbar__line {
+    height: 4px;
+    width: 0%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    transition: all .5s ease;
+}
+
+@keyframes preloaderNumChange {
+    0% {
+        transform: translateY(10%);
+    }
+    100% {
+        transform: translateY(-90%);
+    }
+}
+
+@keyframes preloaderLineChange {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.preloader.active .progressbar__line {
+    animation: preloaderLineChange 4s ease 1;
+    animation-fill-mode: forwards;
+}
+
+.preloader.active .percent__dinamic__wrapper {
+    animation: preloaderNumChange 4s ease 1;
+    animation-fill-mode: forwards;
 }
