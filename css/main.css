@@ -1727,7 +1727,7 @@ a.btn.header__btn svg {
     height: 100vh;
     z-index: 9999;
     background: #fff;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: all 1s ease;
