@@ -866,7 +866,7 @@ h3.team__name {
 
 .news__item:hover,
 .card__item:hover {
-    transform: translateY(-3%);
+    
 }
 
 .news__item:hover > .news__img img {
