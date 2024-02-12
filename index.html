@@ -305,7 +305,7 @@
 								<span class="core__title">Подсистема управления сущностями</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, eveniet.
+								решает задачу по регистрации и управлению сущностями системы, строит общую карту связей, следит за их целостностью.
 							</div>
 						</div>
 						<div class="core__item">
@@ -314,7 +314,7 @@
 								<span class="core__title">Подсистема диспетчеризации</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt minima perferendis voluptatibus dolore nobis repudiandae, nulla quae deleniti quo.
+								это центральный узел всей платформы, через которую проходит всё общение между функциональными модулями и подсистемами ядра
 							</div>
 						</div>
 						<div class="core__item">
@@ -323,7 +323,7 @@
 								<span class="core__title">Подсистема управления модулями</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet.
+								отвечает за регистрацию, управление и версионностью  функциональных модулей и их расширениями в ядре. 
 							</div>
 						</div>
 						<div class="core__item">
@@ -332,7 +332,7 @@
 								<span class="core__title">BPMN движок</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi corporis veniam quo obcaecati!
+								подсистема управления бизнес логикой реализована на базе платформы Camunda с нашими доработками. Подсистема позволяет создавать и запускать бизнес процессы в рамках платформы, а также решать задачи по распределенным транзакциям. 
 							</div>
 						</div>
 						<div class="core__item">
@@ -341,7 +341,7 @@
 								<span class="core__title">UI движок</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, laborum. Facere quo officiis enim labore ut id veniam totam rem dolorem animi!
+								позволяет создавать реактивные веб формы, на базе веб компонентов, с использованием данных о зарегистрированных в ядре сущностях и функциях.
 							</div>
 						</div>
 						<div class="core__item">
@@ -350,7 +350,7 @@
 								<span class="core__title">Подсистема управления пользователями</span>
 							</div>
 							<div class="core__body">
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi dolore blanditiis assumenda adipisci. Vero, officia quo? Dolorum, accusamus sint, adipisci ad accusantium labore omnis consectetur ipsum, quas perferendis a similique!
+								управление пользователями и ролями, а также управление правами на объекты доступа для ролей.
 							</div>
 						</div>
 					</div>
@@ -361,7 +361,7 @@
 								<span class="core__title">Подсистема уведомлений</span>
 							</div>
 							<div class="core__body">
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit voluptatem sapiente unde recusandae eligendi consectetur ullam placeat est.
+								Предоставляет событийную модель для ИНКА 4.0 и построена на базе брокера сообщений Kafka. 
 							</div>
 						</div>
 						<div class="core__item">
@@ -370,7 +370,7 @@
 								<span class="core__title">Подсистема лицензирования</span>
 							</div>
 							<div class="core__body">
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, aperiam aut!
+								управляет лицензиями на ядро и на функциональные модули.
 							</div>
 						</div>
 						<div class="core__item">
@@ -379,7 +379,7 @@
 								<span class="core__title">Подсистема мониторинга и логирования</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat veritatis ea earum pariatur doloremque atque placeat illo, amet ex.
+								Основывается на стандартном Elastic Stack  для управления логами и Prometheus и Grafana
 							</div>
 						</div>
 						<div class="core__item">
@@ -388,7 +388,7 @@
 								<span class="core__title">Подсистема самотестирования</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum accusantium quaerat accusamus exercitationem est, provident sit. Velit deleniti non aperiam dolores ratione asperiores atque!
+								осуществляет проверки подсистем ядра и функциональных модулей на их работоспособность
 							</div>
 						</div>
 						<div class="core__item">
@@ -397,7 +397,7 @@
 								<span class="core__title">Портал ядра</span>
 							</div>
 							<div class="core__body">
-								Lorem, ipsum dolor sit amet consectetur adipisicing.
+								представляет собой единую точку входа для всех пользователей системы.
 							</div>
 						</div>
 						<div class="core__item">
@@ -406,7 +406,7 @@
 								<span class="core__title">Подсистема печати</span>
 							</div>
 							<div class="core__body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus est ipsa debitis, aut sunt dicta?
+								предназначена для печати отчетов по заранее созданным шаблонам
 							</div>
 						</div>
 					</div>
@@ -947,11 +947,17 @@
 							</div>
 						</div>
 						<div class="accordion__header">
-							Что такое платформа ИНКА 4.0 и для чего она предназначена?
+							Какие функциональные возможности предоставляет платформа ИНКА 4.0?
 						</div>
 						<div class="accordion__body">
 							<div class="accordion__content">
-								ИНКА 4.0 — это цифровая платформа от НИЦ «КОНСОМ ГРУПП» для автоматизации и оптимизации производственных процессов, построения единой MES промышленных предприятий в любой отрасли.
+								<ul>
+									<li>Микросервисную архитектуру для гибкости и масштабируемости.</li>
+									<li>Модульную структуру для настройки под потребности.</li>
+									<li>Ядро для коммуникации между модулями.</li>
+									<li>Инструменты для разработки бизнес-приложений.</li>
+									<li>Интеграционную шину для обработки данных.</li>
+								</ul>
 							</div>
 						  </div>
 					</div>
@@ -964,11 +970,17 @@
 							</div>
 						</div>
 						<div class="accordion__header">
-							Что такое платформа ИНКА 4.0 и для чего она предназначена?
+							Каковы преимущества использования платформы ИНКА 4.0 для разработки MES систем?
 						</div>
 						<div class="accordion__body">
 							<div class="accordion__content">
-								ИНКА 4.0 — это цифровая платформа от НИЦ «КОНСОМ ГРУПП» для автоматизации и оптимизации производственных процессов, построения единой MES промышленных предприятий в любой отрасли.
+								<ul>
+									<li>Гибкость и масштабируемость для быстрой адаптации к требованиям.</li>
+									<li>Интеграцию разных модулей для расширения системы.</li>
+									<li>Инструменты для создания уникальных модулей.</li>
+									<li>Интеграционную шину для связи с другими системами.</li>
+									<li>Применение в разных отраслях промышленности.</li>
+								</ul>
 							</div>
 						  </div>
 					</div>
@@ -981,11 +993,11 @@
 							</div>
 						</div>
 						<div class="accordion__header">
-							Что такое платформа ИНКА 4.0 и для чего она предназначена?
+							Какая архитектура у платформы ИНКА 4.0?
 						</div>
 						<div class="accordion__body">
 							<div class="accordion__content">
-								ИНКА 4.0 — это цифровая платформа от НИЦ «КОНСОМ ГРУПП» для автоматизации и оптимизации производственных процессов, построения единой MES промышленных предприятий в любой отрасли.
+								Платформа ИНКА 4.0 базируется на микросервисной архитектуре с Ядром и функциональными модулями. Взаимодействие с модулями осуществляется через DAPR. Функциональные модули представлены веб-сервисами, а доступ к данным обеспечивается протоколом oData.
 							</div>
 						  </div>
 					</div>
@@ -998,11 +1010,19 @@
 							</div>
 						</div>
 						<div class="accordion__header">
-							Что такое платформа ИНКА 4.0 и для чего она предназначена?
+							Какие функциональные модули доступны на платформе ИНКА 4.0?
 						</div>
 						<div class="accordion__body">
 							<div class="accordion__content">
-								ИНКА 4.0 — это цифровая платформа от НИЦ «КОНСОМ ГРУПП» для автоматизации и оптимизации производственных процессов, построения единой MES промышленных предприятий в любой отрасли.
+								<p>Платформа ИНКА 4.0 предлагает модули:</p>
+								<ul>
+									<li>ИНКА.Интеграция: обеспечивает обмен данными в IT-инфраструктуре.</li>
+									<li>ИНКА.НСИ: стандартизация корпоративных справочников.</li>
+									<li>ИНКА.ЖД Логистика: учет и управление подвижным составом.</li>
+									<li>ИНКА. LIMS: управление качеством и лабораториями.</li>
+									<li>ИНКА.Заказы: управление заказами и производственной цепочкой.</li>
+									<li>ИНКА.Модель производства: учет производства и база MES системы с возможностью кастомизации.</li>
+								</ul>
 							</div>
 						  </div>
 					</div>
@@ -1015,11 +1035,71 @@
 							</div>
 						</div>
 						<div class="accordion__header">
-							Что такое платформа ИНКА 4.0 и для чего она предназначена?
+							Требования для использования ИНКА 4.0?
 						</div>
 						<div class="accordion__body">
 							<div class="accordion__content">
-								ИНКА 4.0 — это цифровая платформа от НИЦ «КОНСОМ ГРУПП» для автоматизации и оптимизации производственных процессов, построения единой MES промышленных предприятий в любой отрасли.
+								<p>Минимальные требования:</p>
+								<p>ОЗУ: минимум 4 ГБ.</p>
+								<p>Процессор: 4-ядерный, аналогичный INTEL CORE I5 10-го поколения.</p>
+								<p>Жесткий диск: минимум 64 ГБ свободного места.</p>
+							</div>
+						  </div>
+					</div>
+					<div class="accordion__item">
+						<div class="bg__overlay"></div>
+						<div class="card__icon__wrapper">
+							<div class="card__icon">
+								<span class="card__icon__line"></span>
+								<span class="card__icon__line"></span>
+							</div>
+						</div>
+						<div class="accordion__header">
+							Какова поддержка и обучение от разработчика ИНКА 4.0?
+						</div>
+						<div class="accordion__body">
+							<div class="accordion__content">
+								<p>Разработчик предлагает:</p>
+								<p>Техническая поддержка: Непрерывная помощь в решении вопросов связанных с платформой.</p>
+								<p>Обучение: Программа обучения для аналитиков и разработчиков, созданная НИЦ «КОНСОМ ГРУПП» и Магнитогорским институтом доп. образования, с авторскими методиками.</p>
+							</div>
+						  </div>
+					</div>
+					<div class="accordion__item">
+						<div class="bg__overlay"></div>
+						<div class="card__icon__wrapper">
+							<div class="card__icon">
+								<span class="card__icon__line"></span>
+								<span class="card__icon__line"></span>
+							</div>
+						</div>
+						<div class="accordion__header">
+							Какие процедуры настройки платформы ИНКА 4.0?
+						</div>
+						<div class="accordion__body">
+							<div class="accordion__content">
+								<p>Установка производится через Docker или K8S. Контейнер с модулем регистрируется в ядре, после чего в ядре настраивается связь модуля и маппинг данных. В UI конструкторе настраиваются пользовательские формы.</p>
+							</div>
+						  </div>
+					</div>
+					<div class="accordion__item">
+						<div class="bg__overlay"></div>
+						<div class="card__icon__wrapper">
+							<div class="card__icon">
+								<span class="card__icon__line"></span>
+								<span class="card__icon__line"></span>
+							</div>
+						</div>
+						<div class="accordion__header">
+							Как формируется цена на использование ИНКА 4.0?
+						</div>
+						<div class="accordion__body">
+							<div class="accordion__content">
+								<p>Стоимость включает:</p>
+								<p>Лицензия на ядро.</p>
+								<p>Лицензии на функциональные модули (зависят от модуля).</p>
+								<p>Техническая поддержка: 15% от стоимости лицензий (первый год бесплатно).</p>
+								<p>Финальные затраты зависят от выбранных модулей и дополнительных услуг.</p>
 							</div>
 						  </div>
 					</div>
