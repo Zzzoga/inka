@@ -4,6 +4,9 @@
         padding: 0 36px;
     }
     
+    .top__video {
+        padding: 22px 30px 22px;
+    }
     a.logo svg {
         height: 26px;
         width: 118px;
@@ -89,11 +92,11 @@
     }
     
     section.top__screen .section__wrapper::after {
-        right: 36px;
+        right: 30px;
     }
     
     header.header {
-        padding-top: 16px;
+        padding-top: 21px;
     }
     
     header.header::before {
@@ -370,6 +373,12 @@
     section.news .section__wrapper .news__info,
     .news__list.swiper {
         padding-top: 80px;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 @media only screen and (max-width: 1440px) {
@@ -759,6 +768,10 @@
     .accordion__item:hover > .card__icon__wrapper .card__icon span.card__icon__line {
         width: 16px;
     }
+
+    header.header {
+        padding-top: 16px;
+    }
 }
 @media only screen and (max-width : 1023px) {
     .header__right {
@@ -805,12 +818,13 @@
     
     header.header {
         padding-top: 20px;
+        background: #fff;
     }
     
     .offer::after {display: none;}
     
     section.top__screen .section__wrapper::after {
-        top: -30px;
+        top: -52px;
     }
     
     .offer {
@@ -1050,7 +1064,7 @@
         font-size: 20px;
         font-weight: 400;
         line-height: 24px;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
     }
     
     .hidden__mobile__top__nav a.hidden__nav__link:hover {
@@ -1059,6 +1073,7 @@
     
     .small__nav {
         display: flex;
+        align-items: flex-start;
         flex-direction: column;
         margin-bottom: 28px;
         padding-bottom: 28px;
@@ -1152,10 +1167,21 @@
     .accordion__item:hover > .card__icon__wrapper .card__icon span.card__icon__line {
         width: 12px;
     }
+
+    .news__item:hover,
+    .card__item:hover {
+        transform: translateY(0%);
+    }
+
+    header.header::before, header.header::after {
+        height: 100vh;
+        width: 30px;
+    }
 }
 @media only screen and (max-width : 600px) {
     header.header {
         padding-top: 10px;
+        background: #fff;
     }
     
     header.header::before {
@@ -1188,7 +1214,7 @@
         width: 32px;
     }
     
-    section.top__screen {background: url(../img/top__screen__mobile.png) no-repeat center top;background-size: 150%;}
+    section.top__screen {background: transparent;background-size: 150%;}
     
     .header__left::before {
         bottom: -40px;
@@ -1601,7 +1627,7 @@
     }
     
     .hidden__mobile__nav__container {
-        padding-top: 108px;
+        padding-top: 10vh;
     }
 
     .modal__wrapper {
@@ -1761,5 +1787,45 @@
 
     .preloader__progress {
         margin-top: 19px;
+    }
+
+    .top__video {
+        padding: 52px 15px 20vh;
+    }
+
+    header.header::before, header.header::after {
+        height: 100vh;
+        width: 15px;
+    }
+    
+    header.header::before {
+        left: 0;
+        top: 0;
+        right: auto;
+    }
+    
+    header.header::after {
+        right: 0;
+        top: 0;
+        left: auto;
+    }
+}
+@media only screen and (max-width : 600px) and (max-height: 700px) {
+    .top__video {
+        padding: 52px 15px 20vh;
+    }
+    
+    .hidden__mobile__top__nav a.hidden__nav__link {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+    
+    .small__nav {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .hidden__mobile__nav__container {
+        padding-top: 72px;
     }
 }

@@ -21,7 +21,7 @@ function preloader() {
 	setTimeout(() => {
 		document.querySelector('.preloader').classList.add('disable')
 		document.querySelector('body').style.overflowY = 'visible'
-	}, 6000)
+	}, 7000)
 }
 
 preloader()

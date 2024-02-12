@@ -31,7 +31,7 @@ body {
 }
 
 body.hidden {
-    overflow-y: hidden;
+    overflow-y: hidden !important; 
 }
 
 ul {
@@ -57,6 +57,7 @@ input:-ms-input-placeholder {
 section {
     margin-bottom: 100px;
     width: 100vw;
+    overflow: hidden;
 }
 
 header.header {
@@ -97,7 +98,7 @@ header.header .section__wrapper {
     display: flex;
     background: #fff;
     position: relative;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .header__left__top, .header__right__top {
@@ -110,7 +111,7 @@ header.header .section__wrapper {
     display: flex;
     align-items: center;
     margin-left: 36px;
-    transition: all .5s ease;
+    transition: all 1s ease;
     cursor: pointer;
 }
 
@@ -123,13 +124,31 @@ header.header .section__wrapper {
     border-radius: 0 0 0 30px;
 }
 
+.top__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 22px 46px 22px;
+}
+
+.video__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 section.top__screen {
     width: 100vw;
-    height: 99vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background: url(../img/top__screen__bg.png) no-repeat 46px 22px;
+    background: transparent;
     margin-bottom: 110px;
     position: relative;
 }
@@ -160,14 +179,14 @@ span.burger__icon__line {
     background: #000;
     display: block;
     position: absolute;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .burger__icon {
     position: relative;
     margin-left: 8px;
     width: 32px;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 span.burger__icon__line:nth-child(1) {
@@ -180,7 +199,7 @@ span.burger__icon__line:nth-child(2) {
 
 span.burger__text {
     line-height: 1;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 a.logo {
@@ -193,8 +212,43 @@ a.nav__link {
     color: #000;
     text-decoration: none;
     margin-right: 36px;
-    border-bottom: 1px solid transparent;
-    transition: all .5s ease;
+    position: relative;
+    transition: all 1s ease;
+}
+
+a.nav__link:hover,
+a.hidden__nav__link:hover {
+    color: #0C54A0;
+}
+
+a.hidden__nav__link:hover {
+    font-weight: 600;
+}
+
+a.nav__link:after,
+a.hidden__nav__link:after {
+	content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px; /* Высота линии */
+    background-color: black; /* Цвет подчеркивания при исчезании линии*/
+    transition: width 1s; /* Время эффекта */
+}
+
+a.nav__link:hover:after,
+a.hidden__nav__link:hover:after {
+	content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px; /* Высота линии */
+    background-color: #0C54A0; /* Цвет подчеркивания при появлении линии*/
+    transition: width 1s;  /* Время эффекта */
 }
 
 a.btn {
@@ -207,7 +261,7 @@ a.btn {
     color: #fff;
     text-decoration: none;
     border-radius: 30px;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 a.btn.header__btn {
@@ -215,11 +269,6 @@ a.btn.header__btn {
     align-items: center;
     width: 110px;
     justify-content: center;
-}
-
-a.nav__link:hover {
-    color: #0C54A0;
-    border-color: #0C54A0;
 }
 
 a.btn:hover {
@@ -314,7 +363,8 @@ section.top__screen .section__wrapper {
     flex-direction: column;
     align-items: flex-start;
     padding: 32px 0 0 0;
-	position: relative;
+    bottom: 22px;
+    position: relative;
 }
 
 h1.title {
@@ -361,7 +411,7 @@ section.top__screen .section__wrapper::after {
     content: '';
     position: absolute;
     right: 46px;
-    bottom: 0;
+    bottom: 22px;
     background: url(../img/right_left_down.svg) no-repeat center;
 }
 
@@ -415,7 +465,7 @@ section.description {
     cursor: pointer;
     height: 50px;
     overflow: hidden;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .core__header {
@@ -427,13 +477,13 @@ section.description {
 .core__body {
     padding: 0 16px 10px 16px;
     max-width: 332px;
-    transition: all .5s ease;
+    transition: all 1s ease;
     display: flex;
 }
 
 span.core__title {
     font-weight: 400;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 span.core__title.bold {
@@ -546,7 +596,7 @@ section.content {
     align-items: center;
     border-radius: 50%;
     border: 1px solid #000;
-    transition: all .5s ease;
+    transition: all 1s ease;
     cursor: pointer;
 }
 
@@ -576,7 +626,7 @@ section.content {
 }
 
 .arrow svg g path {
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .card__item {
@@ -590,7 +640,7 @@ section.content {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    transition: all .5s ease;
+    transition: all 1s ease !important;
 }
 
 .card__item.active {
@@ -621,7 +671,7 @@ section.content {
     height: 150px;
     background: linear-gradient(0deg, #EBEBEB 23.46%, rgba(235, 235, 235, 0) 100%);
     bottom: 0;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .card__item.active .card__text__overlay {
@@ -681,7 +731,7 @@ span.person__status {
     justify-content: center;
     align-items: center;
     position: relative;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .card__item.active .card__icon {
@@ -693,7 +743,7 @@ span.card__icon__line {
     height: 1px;
     background: #fff;
     position: absolute;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 span.card__icon__line:nth-child(2) {
@@ -702,7 +752,8 @@ span.card__icon__line:nth-child(2) {
 
 .card__item:hover > .card__icon__wrapper .card__icon,
 .accordion__item:hover > .card__icon__wrapper .card__icon {
-    transform: rotate(360deg);
+    transform: rotate(90deg);
+    background: #0C54A0;
 }
 
 .card__item:hover > .card__icon__wrapper .card__icon span.card__icon__line,
@@ -800,10 +851,11 @@ h3.team__name {
 .team__item.vacansy:hover > .vacansy__inner .card__icon__wrapper .card__icon,
 .news__item:hover > .news__img .card__icon__wrapper .card__icon {
     transform: rotate(-30deg);
+    background: #0C54A0;
 }
 
 .card__icon svg {
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .team__item.vacansy:hover > .vacansy__inner .card__icon__wrapper .card__icon svg,
@@ -863,7 +915,7 @@ h3.news__title {
     max-width: 442px;
     text-decoration: none;
     color: #000;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .news__img {
@@ -881,7 +933,7 @@ h3.news__title {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .hidden__detail__text {
@@ -904,7 +956,7 @@ section.faq h2.section__title {
     background-color: #ebecec;
     overflow: hidden;
     position: relative;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .accordion__header {
@@ -919,7 +971,7 @@ section.faq h2.section__title {
     font-size: 24px;
     font-weight: 600;
     line-height: 29px;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .accordion__body.collapse {border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;}
@@ -961,7 +1013,7 @@ section.faq h2.section__title {
     height: 100%;
     background: url(../img/faq__hover.svg) center top;
     background-color: #EBECEC;
-    transition: all .5s ease;
+    transition: all 1s ease;
     z-index: -1;
 }
 
@@ -1100,7 +1152,7 @@ p.phone {
 p.phone a {
     color: #000;
     text-decoration: none;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 p.phone a:hover {
@@ -1121,7 +1173,7 @@ a.footer__nav__links {
     line-height: 23px;
     color: #000;
     text-decoration: none;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 a.footer__nav__links:hover {
@@ -1139,7 +1191,7 @@ a.footer__nav__links:hover {
 .footer__copyright a {
     text-decoration: none;
     color: #000;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .footer__copyright a:hover {
@@ -1190,7 +1242,7 @@ a.footer__nav__links:hover {
     height: 100%;
     background: rgba(0,0,0,.6);
     backdrop-filter: blur(8px);
-    transition: all .5s ease;
+    transition: all 1s ease;
     opacity: 0;
 }
 
@@ -1206,7 +1258,7 @@ a.footer__nav__links:hover {
     background: #fff;
     border-radius: 0;
     padding: 0;
-    transition: all .5s ease;
+    transition: all 1s ease;
     transform: translateX(100%);
 }
 
@@ -1229,7 +1281,7 @@ a.footer__nav__links:hover {
     transform: rotate(45deg);
     border: none;
     opacity: 0;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .modal__close.visible {
@@ -1262,6 +1314,10 @@ h3.modal__news__title {
     margin-bottom: 20px;
 }
 
+.modal__news__text p {
+    margin-bottom: 15px;
+}
+
 .news__modal span.modal__close__line {
     width: 14px;
     height: 1px;
@@ -1275,6 +1331,7 @@ span.modal__close__line:nth-child(2) {
 
 .news__modal .modal__close:hover {
     background: #0C54A0;
+    transform: rotate(135deg);
 }
 
 /* MODAL CALL */
@@ -1301,7 +1358,7 @@ span.modal__close__line:nth-child(2) {
     background: #F3F3F3;
     border-radius: 30px;
     opacity: 0;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .modal__wrapper.visible {
@@ -1345,7 +1402,7 @@ input.modal__input {
     border: 1px solid transparent;
     padding: 20px;
     position: relative;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 input.modal__input:hover, input.modal__input:focus {
@@ -1363,7 +1420,7 @@ input.modal__btn {
     outline: 0;
     border-radius: 30px;
     cursor: pointer;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 input.modal__btn:hover {
@@ -1387,7 +1444,7 @@ a.politics__link {
     color: #000;
     text-decoration: none;
     border-bottom: 1px solid;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 a.politics__link:hover {
@@ -1408,7 +1465,7 @@ a.politics__link:hover {
     align-items: center;
     transform: rotate(45deg);
     cursor: pointer;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .modal__close:hover {
@@ -1420,7 +1477,7 @@ span.modal__close__line {
     height: 1px;
     background: #000;
     position: absolute;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .modal__close:hover > span.modal__close__line {
@@ -1437,7 +1494,7 @@ span.modal__close__line {
     background-color: #fff;
     border-radius: 20px;
     border: 1px solid transparent;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 input#file {
@@ -1458,7 +1515,7 @@ label#file-label {
     padding: 20px;
     position: relative;
     cursor: pointer;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .custom-file-upload.load label#file-label {
@@ -1468,11 +1525,11 @@ label#file-label {
 svg.file__icon {
     position: absolute;
     right: 20px;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 svg.file__icon path {
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .custom-file-upload:hover {
@@ -1508,7 +1565,7 @@ h3.video__item__title {
     line-height: 21px;
     font-weight: 500;
     margin-top: 16px;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .video__list {
@@ -1548,7 +1605,7 @@ h3.video__item__title {
     top: 0;
     width: 305px;
     overflow: hidden;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 a.hidden__nav__link {
@@ -1563,12 +1620,7 @@ a.hidden__nav__link {
     color: #000;
     border-bottom: 1px solid transparent;
     transition: color, border .5s ease;
-}
-
-a.hidden__nav__link:hover {
-    color: #0C54A0;
-    font-weight: 600;
-    border-color: #0C54A0;
+    position: relative;
 }
 
 .header__left .hidden__nav {
@@ -1660,7 +1712,7 @@ a.btn.header__btn svg {
     align-items: center;
     padding: 30px;
     transform: translateY(-100%);
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .arrows.mobile__arrows {
@@ -1675,7 +1727,7 @@ a.btn.header__btn svg {
     height: 100vh;
     z-index: 9999;
     background: #fff;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     transition: all 1s ease;
@@ -1694,7 +1746,7 @@ a.btn.header__btn svg {
     align-items: center;
     flex-direction: column;
     opacity: 0;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 .preloader__wrapper.visible {
@@ -1739,8 +1791,8 @@ a.btn.header__btn svg {
     flex-direction: column;
     align-items: flex-end;
     position: relative;
-    transition: all .5s ease;
-    transform: translateY(10%);
+    transition: all 1s ease;
+    transform: translateY(30%);
 }
 
 .preloader__progress {
@@ -1765,15 +1817,21 @@ a.btn.header__btn svg {
     top: 0;
     left: 0;
     background: #000;
-    transition: all .5s ease;
+    transition: all 1s ease;
 }
 
 @keyframes preloaderNumChange {
     0% {
-        transform: translateY(10%);
+        transform: translateY(30%);
+    }
+    40% {
+        transform: translateY(0%);
+    }
+    80% {
+        transform: translateY(-33%);
     }
     100% {
-        transform: translateY(-90%);
+        transform: translateY(-67%);
     }
 }
 
