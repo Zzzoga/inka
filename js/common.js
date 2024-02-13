@@ -4,8 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
 	const body = document.querySelector('body')
 
 	// CORE ITEMS
+	const coreList = document.querySelectorAll('.core__item')
+	const bodyHeightFirst = coreList[0].querySelector('.core__body').offsetHeight
+	const headerHeightFirst = coreList[0].querySelector('.core__header').offsetHeight
+	coreList[0].style.height = `${bodyHeightFirst + headerHeightFirst}px`
+	coreList[0].querySelector('span.core__title').classList.add('bold')
+	
 	document.querySelectorAll('.core__item').forEach(item => {
 		item.addEventListener('mouseover', e => {
+			document.querySelectorAll('.core__item').forEach(item => {
+				item.querySelector('span.core__title').classList.remove('bold')
+				const headerHeight = item.querySelector('.core__header').offsetHeight
+				item.style.height = `${headerHeight}px`
+			})
+
 			const bodyHeight = e.target.closest('.core__item').querySelector('.core__body').offsetHeight
 			const headerHeight = e.target.closest('.core__item').querySelector('.core__header').offsetHeight
 			e.target.closest('.core__item').style.height = `${bodyHeight + headerHeight}px`

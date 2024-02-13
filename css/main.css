@@ -1029,6 +1029,15 @@ section.faq h2.section__title {
     background-color: transparent;
 }
 
+.accordion__item.accordion__item_show:hover > .card__icon__wrapper .card__icon {
+    background: #000;
+    transform: rotate(0deg);
+}
+
+.accordion__item.accordion__item_show:hover > .card__icon__wrapper {
+    transform: rotate(0deg);
+}
+
 .accordion__item:hover {
     background-color: transparent;
 }
@@ -1147,6 +1156,7 @@ p.address {
 p.phone {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 p.phone a {
@@ -1159,6 +1169,34 @@ p.phone a:hover {
     color: #0C54A0;
 }
 
+p.phone a {
+    position: relative;
+}
+
+p.phone a:after {
+	content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    width: 0;
+    height: 1px; /* Высота линии */
+    background-color: black; /* Цвет подчеркивания при исчезании линии*/
+    transition: width 1s; /* Время эффекта */
+}
+
+p.phone a:hover:after {
+	content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    height: 1px; /* Высота линии */
+    background-color: #0C54A0; /* Цвет подчеркивания при появлении линии*/
+    transition: width 1s;  /* Время эффекта */
+}
+
 .footer__nav {
     display: flex;
     justify-content: space-between;
@@ -1167,17 +1205,42 @@ p.phone a:hover {
     margin-bottom: 18px;
 }
 
-a.footer__nav__links {
+a.footer__nav__links, a.politics {
     font-size: 15px;
     font-weight: 400;
     line-height: 23px;
     color: #000;
     text-decoration: none;
+    position: relative;
     transition: all 1s ease;
 }
 
-a.footer__nav__links:hover {
+a.footer__nav__links:hover, a.politics:hover {
     color: #0C54A0;
+}
+
+a.footer__nav__links:after, a.politics:after {
+	content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px; /* Высота линии */
+    background-color: black; /* Цвет подчеркивания при исчезании линии*/
+    transition: width 1s; /* Время эффекта */
+}
+
+a.footer__nav__links:hover:after, a.politics:hover:after {
+	content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px; /* Высота линии */
+    background-color: #0C54A0; /* Цвет подчеркивания при появлении линии*/
+    transition: width 1s;  /* Время эффекта */
 }
 
 .footer__copyright {
@@ -1772,7 +1835,7 @@ a.btn.header__btn svg {
 .preloader__percent {
     font-size: 110px;
     font-weight: 400;
-    line-height: 126px;
+    line-height: 90px;
     display: flex;
 }
 
@@ -1783,7 +1846,7 @@ a.btn.header__btn svg {
 .percent__dinamic {
     position: relative;
     overflow: hidden;
-    max-height: 126px;
+    max-height: 90px;
 }
 
 .percent__dinamic__wrapper {
