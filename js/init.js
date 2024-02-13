@@ -7,7 +7,7 @@ var newsSwiper = new Swiper(".news__list", {
     spaceBetween: 0,
     breakpoints: {
       768: {
-        spaceBetween: 11,
+        spaceBetween: 0,
       },
       1024: {
         spaceBetween: 16,
@@ -30,7 +30,7 @@ var casesSwiper = new Swiper("section.cases .cards__items", {
     spaceBetween: 0,
     breakpoints: {
       768: {
-        spaceBetween: 11,
+        spaceBetween: 0,
       },
       1024: {
         spaceBetween: 16,

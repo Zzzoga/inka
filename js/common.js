@@ -1,6 +1,18 @@
 // Doc done scripts
 document.addEventListener('DOMContentLoaded', () => {
 
+	$('body').on('click touchstart', function () {
+		const videoElement = document.querySelector('.top__video video');
+		if (videoElement.playing) {
+			// video is already playing so do nothing
+		}
+		else {
+			// video is not playing
+			// so play video now
+			videoElement.play();
+		}
+	});
+
 	const body = document.querySelector('body')
 
 	// CORE ITEMS
@@ -43,6 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			} else {
 				e.target.closest('.card__item').classList.remove('active')
 			}
+		})
+	})
+
+	// CASES ARROW EVENT
+	document.querySelectorAll('section.cases .arrow').forEach(arrow => {
+		arrow.addEventListener('click', e => {
+			document.querySelectorAll('.card__item').forEach(card => {
+				card.classList.remove('active')
+			})
 		})
 	})
 
