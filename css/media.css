@@ -1774,7 +1774,7 @@
     
     .preloader__percent {
         font-size: 35px;
-        line-height: 40px;
+        line-height: 1;
     }
     
     .percent__dinamic {
