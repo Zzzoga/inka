@@ -2,13 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 	$('body').on('click touchstart', function () {
-		const videoElement = document.querySelector('.top__video video');
+		const videoElement = document.querySelector('.top__video video')
 		if (videoElement.playing) {
-			// video is already playing so do nothing
 		}
 		else {
-			// video is not playing
-			// so play video now
 			videoElement.play();
 		}
 	});
